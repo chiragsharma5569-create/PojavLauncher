@@ -1,151 +1,225 @@
+
 <h1 align="center">RubicLauncher</h1>
 
-<img 
-src="https://i.ibb.co/N2HPBNMJ/file-00000000d50081fa821620dd0548e853.png" align="left" width="180" height="180" alt="RubicLauncher logo">
-[![Android CI](https://github.com/PojavLauncherTeam/PojavLauncher/workflows/Android%20CI/badge.svg)](https://github.com/PojavLauncherTeam/PojavLauncher/actions)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/PojavLauncherTeam/PojavLauncher)](https://github.com/PojavLauncherTeam/PojavLauncher/actions)
-[![Crowdin](https://badges.crowdin.net/pojavlauncher/localized.svg)](https://crowdin.com/project/pojavlauncher)
-[![Discord](https://img.shields.io/discord/724163890803638273.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.com/invite/aenk3EUvER)
-[![Twitter Follow](https://img.shields.io/twitter/follow/plaunchteam?color=blue&style=flat-square)](https://twitter.com/PLaunchTeam)
+<img src="https://i.ibb.co/N2HPBNMJ/file-00000000d50081fa821620dd0548e853.png" align="left" width="180" height="180" alt="RubicLauncher logo">
 
-*From [Boardwalk](https://github.com/zhuowei/Boardwalk)'s ashes here comes RubicLauncher!*
+<br clear="left">
 
-Rubic launcher  is a launcher that allows you to play Minecraft: Java Edition on your Android and [iOS](https://github.com/PojavLauncherTeam/PojavLauncher_iOS) devices.
+<p align="center">
+  <strong>Minecraft Java Edition on Mobile</strong>
+  <br>
+  A new launcher project focused on bringing Java Edition to mobile devices.
+  <br><br>
+  <img src="https://img.shields.io/badge/Status-Under%20Development-orange?style=for-the-badge" alt="Under Development">
+  <img src="https://img.shields.io/badge/Platform-Android-blue?style=for-the-badge" alt="Android">
+  <img src="https://img.shields.io/badge/Game-Minecraft%20Java-3C8527?style=for-the-badge" alt="Minecraft Java Edition">
+</p>
 
-For more details, check out our [wiki](https://pojavlauncher.app/)!
+---
 
-## Important Notes
+## ✨ About RubicLauncher
 
-**PojavLauncher has been discontinued** and is no longer supported. Its successor is available [here](https://github.com/AngelAuraMC/Amethyst-Android).
+**RubicLauncher** is a Minecraft Java Edition launcher project focused on making the Java Edition experience available on mobile devices.
 
-## Table of Contents
+The project aims to provide mobile-friendly controls, customizable settings, graphics support, and compatibility with supported Minecraft versions and mods.
 
-* [Introduction](#introduction)
-* [Getting PojavLauncher](#getting-pojavlauncher)
-* [Building](#building)
-    * [Quick Build (Recommended)](#quick-build-recommended)
-    * [Detailed Build](#detailed-build)
-* [Current Status](#current-status)
-* [Known Issues](#known-issues)
-* [FAQ](#faq)
-* [Contributing](#contributing)
-* [Support](#support)
-* [License](#license)
-* [Credits & Dependencies](#credits--dependencies)
-* [Roadmap](#roadmap)
+> 🚧 **Currently under development**
+>
+> RubicLauncher is a work in progress and may not work properly yet. Some features may be incomplete, unstable, or unavailable. Users may experience crashes, bugs, low FPS, graphical glitches, or compatibility problems. Development is ongoing, and features may change over time.
 
-## Introduction
+## 🎯 Project Goals
 
-* PojavLauncher is a Minecraft: Java Edition launcher for Android and iOS based on [Boardwalk](https://github.com/zhuowei/Boardwalk)
-* This launcher can launch almost all available Minecraft versions ranging from rd-132211 to 1.21 snapshots (including Combat Test versions)
-* Modding via Forge and Fabric are also supported.
-* This repository contains source code for Android. For iOS/iPadOS, check out [PojavLauncher_iOS](https://github.com/PojavLauncherTeam/PojavLauncher_iOS).
+- 📱 Bring Minecraft Java Edition to compatible mobile devices.
+- 🎮 Improve touchscreen controls and the overall gameplay experience.
+- ⚙️ Make setup and configuration easier.
+- 🧩 Explore compatibility with Fabric, Forge, and supported mods.
+- 🎨 Improve graphics rendering and visual compatibility.
+- 🚀 Work toward better performance and stability.
+- 🛠️ Fix bugs and improve reliability.
+- 🔧 Provide useful customization options.
+- 📦 Introduce additional features as development progresses.
 
-## Getting PojavLauncher
+## 📊 Development Status
 
-You can get PojavLauncher via three methods:
+| Feature | Status |
+|---|---|
+| Core Launcher | Under Development |
+| Android Support | In Development |
+| User Interface | Subject to Changes |
+| Touch Controls | Under Development |
+| Java Runtime Integration | Compatibility Dependent |
+| Graphics Rendering | Device Dependent |
+| Fabric Compatibility | Version Dependent |
+| Forge Compatibility | Version Dependent |
+| Performance Optimization | Ongoing |
+| Bug Fixes | Ongoing |
+| New Features | Planned |
 
-1. **Releases:** Download the prebuilt app from our [stable releases](https://github.com/PojavLauncherTeam/PojavLauncher/releases) or [automatic builds](https://github.com/PojavLauncherTeam/PojavLauncher/actions).
-2. **Google Play:** Get it from Google Play by clicking on this badge: [![Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=net.kdt.pojavlaunch)
-3. **Build from Source:** Follow the [building instructions](#building) below.
+*These are general development areas, not guarantees that every feature is currently functional.*
 
-## Building
+## 📲 Getting Started
 
-### Quick Build (Recommended)
+When a compatible RubicLauncher build is available:
 
-The easiest way to build PojavLauncher is to use the pre-built JREs provided by our CI.
+1. Obtain the application from the project's distribution source.
+2. Install it on a compatible device.
+3. Complete the initial setup.
+4. Choose a Minecraft version compatible with the available Java runtime.
+5. Configure your controls and graphics settings.
+6. Launch the game and check whether your configuration works correctly.
 
-1. Clone the repository: `git clone https://github.com/PojavLauncherTeam/PojavLauncher.git`
-2. Build the launcher: `./gradlew :app_pojavlauncher:assembleDebug` (Use `gradlew.bat` on Windows)
+Compatibility can vary depending on your device, operating system, Java runtime, graphics drivers, Minecraft version, and installed mods.
 
-The built APK will be located in `app_pojavlauncher/build/outputs/apk/debug/`.
+## 🛠️ Building from Source
 
-### Detailed Build
+RubicLauncher is based on an existing launcher codebase. Building the project requires the appropriate development environment and dependencies.
 
-If you need more control over the build process, follow these steps:
+### Requirements
 
-1. **Java Runtime Environment (JRE):** Download the `jre8-pojav` artifact from our [CI auto builds](https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch/actions).  This package contains pre-built JREs for all supported architectures.  If you need to build the JRE yourself, follow the instructions in the [android-openjdk-build-multiarch](https://github.com/PojavLauncherTeam/android-openjdk-build-multiarch) repository.
+- Git
+- Android Studio or a compatible development environment
+- Java Development Kit (JDK)
+- Android SDK and build tools
+- Gradle
+- Required Java runtimes
+- Native libraries and other project dependencies
 
-2. **LWJGL:** The build instructions for the custom LWJGL are available over the [LWJGL repository](https://github.com/PojavLauncherTeam/lwjgl3).
+### Build Instructions
 
-3. **Language List:** Because languages are auto-added by Crowdin, you need to run the language list generator before building. In the project directory, run:
-   * Linux/macOS:
-     ```bash
-     chmod +x scripts/languagelist_updater.sh
-     bash scripts/languagelist_updater.sh
-     ```
-   * Windows:
-     ```batch
-     scripts\languagelist_updater.bat
-     ```
+1. Obtain the project source code.
+2. Open the project in Android Studio or your preferred development environment.
+3. Configure the required SDK, JDK, and dependencies.
+4. Allow Gradle to configure the project.
+5. Run the appropriate Gradle build tasks.
+6. Find the generated APK in the relevant build output directory.
 
-4. **Build GLFW stub:** `./gradlew :jre_lwjgl3glfw:build`
+Example commands for the existing project structure:
 
-5. **Build the launcher:** `./gradlew :app_pojavlauncher:assembleDebug` (Replace `gradlew` with `gradlew.bat` on Windows).
+```bash
+./gradlew :jre_lwjgl3glfw:build
+./gradlew :app_pojavlauncher:assembleDebug
+```
 
-## Current Status
+The internal Gradle module name may still contain the original launcher name. It can remain unchanged while the public project is branded as RubicLauncher.
 
-* [x] OpenJDK 8 Mobile port: ARM32, ARM64, x86, x86_64
-* [x] OpenJDK 17 Mobile port: ARM32, ARM64, x86, x86_64
-* [x] OpenJDK 21 Mobile port: ARM32, ARM64, x86, x86_64
-* [x] Headless mod installer
-* [x] Mod installer with GUI
-* [x] OpenGL in OpenJDK environment
-* [x] OpenAL (works on most devices)
-* [x] Support for Minecraft 1.12.2 and below
-* [x] Support for Minecraft 1.13 and above
-* [x] Support for Minecraft 1.17 (22w13a) and above
-* [x] Game surface zooming
-* [x] New input pipe rewritten to native code
-* [x] Rewritten entire controls system
-* [ ] More to come!
+Build requirements and commands may change as the project evolves.
 
-## Known Issues
+## ⚠️ Known Issues
 
-See our [issue tracker](https://github.com/PojavLauncherTeam/PojavLauncher/issues) for a list of known issues and their current status.
+During development, users may encounter:
 
-## FAQ
+- The application crashing or failing to launch.
+- Certain Minecraft versions not starting.
+- Black screens or graphical rendering glitches.
+- Low FPS or inconsistent performance.
+- Java runtime or architecture compatibility errors.
+- Mods, shaders, or resource packs failing to load.
+- Controls or settings behaving unexpectedly.
+- Device-specific problems caused by graphics drivers or hardware limitations.
 
-See our [wiki](https://pojavlauncherteam.github.io/) for more information.
+Not every issue will affect every device.
 
-## Contributing
+## 🐛 Bug Reports
 
-Contributions are welcome! We welcome any type of contribution, not only code. For example, you can help improve the [wiki](https://pojavlauncherteam.github.io/), contribute to the [translations](https://crowdin.com/project/pojavlauncher), or submit bug reports and feature requests.
+If you encounter a problem, include the following information when reporting it:
 
-Any code change should be submitted as a pull request. The description should explain what the code does and give steps to execute it.
+- Device model
+- Android version
+- RubicLauncher version
+- Minecraft version
+- Java runtime version
+- Mod loader, if applicable
+- Description of the problem
+- Steps to reproduce the issue
+- Relevant crash logs or screenshots
 
-## Support
+Remove passwords, access tokens, and other private information from logs before sharing them.
 
-For support, please join our [Discord server](https://discord.com/invite/aenk3EUvER).
+## ❓ Frequently Asked Questions
 
-## License
+### Is RubicLauncher finished?
 
-PojavLauncher is licensed under [GNU LGPLv3](https://github.com/PojavLauncherTeam/PojavLauncher/blob/v3_openjdk/LICENSE).
+No. RubicLauncher is under development, and features may change as work progresses.
 
-## Credits & Dependencies
+### Will everything work properly?
 
-* [Boardwalk](https://github.com/zhuowei/Boardwalk) (JVM Launcher): Unknown License/[Apache License 2.0](https://github.com/zhuowei/Boardwalk/blob/master/LICENSE) or GNU GPLv2.
-* Android Support Libraries: [Apache License 2.0](https://android.googlesource.com/platform/prebuilts/maven_repo/android/+/master/NOTICE.txt).
-* [GL4ES](https://github.com/PojavLauncherTeam/gl4es): [MIT License](https://github.com/ptitSeb/gl4es/blob/master/LICENSE).
-* [OpenJDK](https://github.com/PojavLauncherTeam/openjdk-multiarch-jdk8u): [GNU GPLv2 License](https://openjdk.java.net/legal/gplv2+ce.html).
-* [LWJGL3](https://github.com/PojavLauncherTeam/lwjgl3): [BSD-3 License](https://github.com/LWJGL/lwjgl3/blob/master/LICENSE.md).
-* [LWJGLX](https://github.com/PojavLauncherTeam/lwjglx) (LWJGL2 API compatibility layer for LWJGL3): unknown license.
-* [Mesa 3D Graphics Library](https://gitlab.freedesktop.org/mesa/mesa): [MIT License](https://docs.mesa3d.org/license.html).
-* [pro-grade](https://github.com/pro-grade/pro-grade) (Java sandboxing security manager): [Apache License 2.0](https://github.com/pro-grade/pro-grade/blob/master/LICENSE.txt).
-* [bhook](https://github.com/bytedance/bhook) (Used for exit code trapping): [MIT license](https://github.com/bytedance/bhook/blob/main/LICENSE).
-* [libepoxy](https://github.com/anholt/libepoxy): [MIT License](https://github.com/anholt/libepoxy/blob/master/COPYING).
-* [virglrenderer](https://github.com/PojavLauncherTeam/virglrenderer): [MIT License](https://gitlab.freedesktop.org/virgl/virglrenderer/-/blob/master/COPYING).
-* Thanks to [MCHeads](https://mc-heads.net) for providing Minecraft avatars.
+Not necessarily. Some features may be incomplete, and compatibility varies between devices and Minecraft versions.
 
-## Roadmap
+### Can I use mods?
 
-We are currently focusing on:
+Mod compatibility depends on the Minecraft version, mod loader, and individual mod requirements.
 
-* Exploring new rendering technologies.
+### Will it work on every Android device?
 
-Future plans include:
+No universal compatibility is guaranteed. Hardware, memory, graphics drivers, and system software can affect performance and functionality.
 
-* Improving stability and performance.
-* Enhancing the mod installation experience.
+### Why does the game crash or show a black screen?
 
-We welcome community feedback and suggestions for our roadmap.  Please feel free to open a feature request in our [issue tracker](https://github.com/PojavLauncherTeam/PojavLauncher/issues).
+Possible causes include incompatible Java runtimes, graphics driver issues, unsupported game versions, insufficient memory, or incompatible mods.
+
+### Will performance improve?
+
+Performance optimization is one of the project's goals. Actual results will depend on the device and future development.
+
+## 🤝 Contributing
+
+Contributions and constructive feedback are welcome.
+
+You can contribute by:
+
+- Reporting bugs.
+- Suggesting features.
+- Improving documentation.
+- Testing on different devices.
+- Helping investigate compatibility problems.
+- Improving performance and stability.
+- Submitting code changes.
+
+Please explain your changes clearly and include steps for testing them.
+
+## 🔒 Safety and Downloads
+
+- Install applications only from sources you trust.
+- Back up important Minecraft worlds before testing development builds.
+- Avoid testing unstable builds with valuable worlds.
+- Never share passwords, private account details, or access tokens.
+- Remember that development builds may contain unexpected bugs.
+
+## 📄 License
+
+RubicLauncher uses the license applicable to its underlying source code and third-party components. Preserve the original license files and required attributions when modifying or redistributing the project.
+
+## 🙏 Credits and Acknowledgements
+
+RubicLauncher builds upon the work of open-source developers and projects that help make mobile Minecraft Java Edition launching possible.
+
+Thanks to the contributors and maintainers of the underlying launcher codebase, Java runtimes, graphics libraries, Android libraries, and other dependencies.
+
+All applicable third-party licenses and attributions should be preserved.
+
+## 🗺️ Roadmap
+
+Future development may focus on:
+
+- Improving overall stability.
+- Fixing crashes and compatibility problems.
+- Refining the user interface.
+- Enhancing touchscreen controls.
+- Improving graphics and rendering compatibility.
+- Improving Java runtime integration.
+- Expanding device compatibility testing.
+- Making mod installation easier.
+- Optimizing performance where possible.
+- Introducing useful features based on feedback.
+
+The roadmap may change as development continues.
+
+---
+
+<p align="center">
+  <strong>💎 RubicLauncher</strong>
+  <br>
+  Built with passion for Minecraft Java Edition on mobile.
+  <br><br>
+  <em>Under Development · More Improvements to Come</em>
+</p>
