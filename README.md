@@ -1,14 +1,14 @@
 <h1 align="center">RubicLauncher</h1>
 
 <img 
-src="https://i.ibb.co/N2HPBNMJ/file-00000000d50081fa821620dd0548e853.png" align="left" width="130" height="150" alt="RubicLauncher logo">
+src="https://i.ibb.co/N2HPBNMJ/file-00000000d50081fa821620dd0548e853.png" align="left" width="180" height="180" alt="RubicLauncher logo">
 [![Android CI](https://github.com/PojavLauncherTeam/PojavLauncher/workflows/Android%20CI/badge.svg)](https://github.com/PojavLauncherTeam/PojavLauncher/actions)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/PojavLauncherTeam/PojavLauncher)](https://github.com/PojavLauncherTeam/PojavLauncher/actions)
 [![Crowdin](https://badges.crowdin.net/pojavlauncher/localized.svg)](https://crowdin.com/project/pojavlauncher)
 [![Discord](https://img.shields.io/discord/724163890803638273.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.com/invite/aenk3EUvER)
 [![Twitter Follow](https://img.shields.io/twitter/follow/plaunchteam?color=blue&style=flat-square)](https://twitter.com/PLaunchTeam)
 
-*From [Boardwalk](https://github.com/zhuowei/Boardwalk)'s ashes here comes PojavLauncher!*
+*From [Boardwalk](https://github.com/zhuowei/Boardwalk)'s ashes here comes RubicLauncher!*
 
 Rubic launcher  is a launcher that allows you to play Minecraft: Java Edition on your Android and [iOS](https://github.com/PojavLauncherTeam/PojavLauncher_iOS) devices.
 
