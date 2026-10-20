@@ -8,7 +8,7 @@ on:
       - v3_openjdk
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -55,9 +55,10 @@ jobs:
           cp app_pojavlauncher/build/outputs/apk/debug/app_pojavlauncher-debug.apk \
             out/RubicLauncher.apk
 
-      - name: Upload RubicLauncher APK
-        uses: actions/upload-artifact@v4
+      - name: Publish APK Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: RubicLauncher-debug
-          path: out/RubicLauncher.apk
-          if-no-files-found: error
+          tag_name: RubicLauncher-build-${{ github.run_number }}
+          name: RubicLauncher Build ${{ github.run_number }}
+          files: out/RubicLauncher.apk
+          generate_release_notes: true
