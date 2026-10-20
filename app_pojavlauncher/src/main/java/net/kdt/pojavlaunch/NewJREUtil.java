@@ -154,10 +154,196 @@ public class NewJREUtil {
                     (InternalRuntime) selectedRuntime.value;
 
             if (!checkInternalRuntime(assetManager, internalRuntime)) {
-                if (nearestInstalledRuntime == null) {
+
+                if (nearestInstalledRuntime != null) {
+                    selectedRuntime = nearestInstalledRuntime;
+                } else {
                     if (!isJavaVersionAvailableForDownload(requiredVersion)) {
                         showRuntimeFail(activity, versionInfo);
                         return false;
                     }
 
                     try {
+                        tryDownloadRuntime(activity, requiredVersion);
+                    } catch (RuntimeException e) {
+                        Log.e("NewJREAuto", "Automatic Java download failed", e);
+                        showRuntimeFail(activity, versionInfo);
+                        return false;
+                    }
+
+                    selectedRuntime =
+                            getNearestInstalledRuntime(requiredVersion);
+                }
+            }
+        }
+
+        if (selectedRuntime == null) {
+            if (!isJavaVersionAvailableForDownload(requiredVersion)) {
+                showRuntimeFail(activity, versionInfo);
+                return false;
+            }
+
+            try {
+                tryDownloadRuntime(activity, requiredVersion);
+            } catch (RuntimeException e) {
+                Log.e("NewJREAuto", "Automatic Java download failed", e);
+                showRuntimeFail(activity, versionInfo);
+                return false;
+            }
+
+            selectedRuntime = getNearestInstalledRuntime(requiredVersion);
+        }
+
+        if (selectedRuntime == null) {
+            showRuntimeFail(activity, versionInfo);
+            return false;
+        }
+
+        Object selected = selectedRuntime.value;
+        String appropriateRuntime;
+        InternalRuntime internalRuntime;
+
+        if (selected instanceof Runtime) {
+            Runtime selectedInstalledRuntime = (Runtime) selected;
+            appropriateRuntime = selectedInstalledRuntime.name;
+            internalRuntime = getInternalRuntime(selectedInstalledRuntime);
+
+        } else if (selected instanceof InternalRuntime) {
+            internalRuntime = (InternalRuntime) selected;
+            appropriateRuntime = internalRuntime.name;
+
+        } else {
+            throw new RuntimeException(
+                    "Unexpected runtime type: " + selected.getClass().getName());
+        }
+
+        if (internalRuntime != null
+                && !checkInternalRuntime(assetManager, internalRuntime)) {
+            return false;
+        }
+
+        minecraftProfile.javaDir =
+                Tools.LAUNCHERPROFILES_RTPREFIX + appropriateRuntime;
+
+        LauncherProfiles.write();
+        return true;
+    }
+
+    private static void showRuntimeFail(
+            Activity activity,
+            JMinecraftVersionList.Version versionInfo) {
+
+        Tools.dialogOnUiThread(
+                activity,
+                activity.getString(R.string.global_error),
+                activity.getString(
+                        R.string.multirt_nocompatiblert,
+                        versionInfo.javaVersion.majorVersion));
+    }
+
+    public static boolean isJavaVersionAvailableForDownload(int version) {
+        for (ExternalRuntime javaVersion : ExternalRuntime.values()) {
+            if (javaVersion.majorVersion == version) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static String getJreSource(int javaVersion, String arch) {
+        return String.format(
+                "https://github.com/AngelAuraMC/angelauramc-openjdk-build/releases/download/download_jre%1$s/jre%1$s-android-%2$s.tar.xz",
+                javaVersion,
+                arch);
+    }
+
+    private static void tryDownloadRuntime(Context activity, int javaVersion) {
+        String arch = archAsString(getDeviceArchitecture());
+
+        if (!isJavaVersionAvailableForDownload(javaVersion)) {
+            throw new RuntimeException(
+                    "Unsupported Java runtime version: " + javaVersion);
+        }
+
+        if (getDeviceArchitecture() == Architecture.ARCH_X86
+                && javaVersion >= 21) {
+            throw new RuntimeException(
+                    "x86 is not supported on Java " + javaVersion);
+        }
+
+        File outputFile = new File(
+                Tools.DIR_CACHE,
+                String.format("jre%s-android-%s.tar.xz", javaVersion, arch));
+
+        try {
+            DownloaderProgressWrapper monitor =
+                    new DownloaderProgressWrapper(
+                            R.string.newdl_downloading_jre_runtime,
+                            ProgressLayout.UNPACK_RUNTIME);
+
+            monitor.extraString = Integer.toString(javaVersion);
+
+            DownloadUtils.downloadFileMonitored(
+                    getJreSource(javaVersion, arch),
+                    outputFile,
+                    null,
+                    monitor);
+
+            String jreName = "External-" + javaVersion;
+
+            try (FileInputStream input = new FileInputStream(outputFile)) {
+                MultiRTUtils.installRuntimeNamed(
+                        NATIVE_LIB_DIR,
+                        input,
+                        jreName);
+            }
+
+            MultiRTUtils.postPrepare(jreName);
+            outputFile.delete();
+
+        } catch (IOException e) {
+            throw new RuntimeException(
+                    "Failed to download Java " + javaVersion + " for " + arch,
+                    e);
+        }
+    }
+
+    private enum InternalRuntime {
+        JRE_17(17, "Internal-17", "components/jre-new"),
+        JRE_21(21, "Internal-21", "components/jre-21");
+
+        public final int majorVersion;
+        public final String name;
+        public final String path;
+
+        InternalRuntime(int majorVersion, String name, String path) {
+            this.majorVersion = majorVersion;
+            this.name = name;
+            this.path = path;
+        }
+    }
+
+    public enum ExternalRuntime {
+        JRE_8(8, "External-8"),
+        JRE_17(17, "External-17"),
+        JRE_21(21, "External-21"),
+        JRE_25(25, "External-25");
+
+        public final int majorVersion;
+        public final String name;
+        public final String downloadLink;
+        public boolean isDownloading = false;
+
+        ExternalRuntime(int majorVersion, String name) {
+            this.majorVersion = majorVersion;
+            this.name = name;
+            this.downloadLink = getJreSource(
+                    majorVersion,
+                    archAsString(getDeviceArchitecture()));
+        }
+
+        public void downloadRuntime(Context activity) {
+            tryDownloadRuntime(activity, majorVersion);
+        }
+    }
+}
